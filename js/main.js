@@ -19,21 +19,27 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetWindow = document.getElementById(windowId);
             
             if (targetWindow) {
-                // Position the window with its center at the mouse cursor
+                // Get mouse position
                 const mouseX = e.clientX;
                 const mouseY = e.clientY;
                 
+                // Calculate position to center window at mouse cursor
+                const windowWidth = targetWindow.offsetWidth;
+                const windowHeight = targetWindow.offsetHeight;
+                
+                let posX = mouseX - (windowWidth / 2);
+                let posY = mouseY - (windowHeight / 2);
+                
                 // Constrain to viewport bounds
-                const maxX = document.body.clientWidth - targetWindow.offsetWidth;
-                const maxY = document.body.clientHeight - targetWindow.offsetHeight;
+                const maxX = document.body.clientWidth - windowWidth;
+                const maxY = document.body.clientHeight - windowHeight;
                 
-                // Calculate position ensuring window is fully visible
-                // Subtract half the window width and height to center it at cursor
-                const windowX = Math.max(0, Math.min(mouseX - (targetWindow.offsetWidth / 2), maxX));
-                const windowY = Math.max(0, Math.min(mouseY - (targetWindow.offsetHeight / 2), maxY));
+                posX = Math.max(0, Math.min(posX, maxX));
+                posY = Math.max(0, Math.min(posY, maxY));
                 
-                targetWindow.style.left = windowX + 'px';
-                targetWindow.style.top = windowY + 'px';
+                // Set window position
+                targetWindow.style.left = posX + 'px';
+                targetWindow.style.top = posY + 'px';
                 
                 // Show window with animation
                 openWindow(targetWindow);
