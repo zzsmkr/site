@@ -310,7 +310,17 @@ body {
     margin-top: 20px;
 }
 
+/* Email item styling */
+.email-item {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
 /* Update social-item to be clickable */
+.social-item {
+    text-decoration: none;
+    cursor: pointer;
+}
+
 .social-item {
     border-radius: 12px;
     padding: 15px;
