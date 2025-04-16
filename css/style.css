@@ -311,67 +311,47 @@ body {
 }
 
 .social-item {
-    background-color: #f8f9fa;
     border-radius: 12px;
     padding: 15px;
     display: flex;
     align-items: center;
     transition: var(--transition);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    color: white;
+}
+
+.social-item:nth-child(1) {
+    background: linear-gradient(45deg, #FF0000, #FF5555);
+}
+
+.social-item:nth-child(2) {
+    background: linear-gradient(45deg, #000000, #444444);
+}
+
+.social-item:nth-child(3) {
+    background: linear-gradient(45deg, #0088cc, #00a2ff);
+}
+
+.social-item:nth-child(4) {
+    background: linear-gradient(45deg, #5865F2, #7289da);
 }
 
 .social-item:hover {
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .social-item i {
     font-size: 24px;
+    color: white;
     margin-right: 15px;
     width: 40px;
     height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: rgba(255, 255, 255, 0.2);
     border-radius: 10px;
-    color: white;
-}
-
-/* Platform-specific colors - with !important to override any other styles */
-.socials-grid .social-item.youtube {
-    background: linear-gradient(to right, rgba(255, 0, 0, 0.15), rgba(255, 0, 0, 0.05)) !important;
-    border-left: 4px solid #FF0000 !important;
-}
-.socials-grid .social-item.youtube i {
-    background: #FF0000 !important;
-    color: white !important;
-}
-
-.socials-grid .social-item.tiktok {
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.05)) !important;
-    border-left: 4px solid #000000 !important;
-}
-.socials-grid .social-item.tiktok i {
-    background: #000000 !important;
-    color: white !important;
-}
-
-.socials-grid .social-item.telegram {
-    background: linear-gradient(to right, rgba(0, 136, 204, 0.15), rgba(0, 136, 204, 0.05)) !important;
-    border-left: 4px solid #0088cc !important;
-}
-.socials-grid .social-item.telegram i {
-    background: #0088cc !important;
-    color: white !important;
-}
-
-.socials-grid .social-item.discord {
-    background: linear-gradient(to right, rgba(88, 101, 242, 0.15), rgba(88, 101, 242, 0.05)) !important;
-    border-left: 4px solid #5865F2 !important;
-}
-.socials-grid .social-item.discord i {
-    background: #5865F2 !important;
-    color: white !important;
 }
 
 .social-item-content {
@@ -381,6 +361,7 @@ body {
 .social-item h3 {
     font-size: 16px;
     margin-bottom: 2px;
+    color: white;
 }
 
 .social-item p {
@@ -388,14 +369,15 @@ body {
 }
 
 .social-item a {
-    color: #636e72;
+    color: rgba(255, 255, 255, 0.9);
     text-decoration: none;
     transition: var(--transition);
     font-weight: 500;
 }
 
 .social-item a:hover {
-    color: var(--primary-color);
+    color: white;
+    text-decoration: underline;
 }
 
 /* Animation Classes */
