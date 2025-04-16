@@ -14,32 +14,27 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Dock item click handlers
     dockItems.forEach(item => {
-        item.addEventListener('click', function(e) {
+        item.addEventListener('click', function() {
             const windowId = this.getAttribute('data-window') + '-window';
             const targetWindow = document.getElementById(windowId);
             
             if (targetWindow) {
-                // Get mouse position from the click event
-                const mouseX = e.clientX;
-                const mouseY = e.clientY;
+                // Position the window randomly but closer to the center
+                const maxX = document.body.clientWidth - targetWindow.offsetWidth;
+                const maxY = document.body.clientHeight - targetWindow.offsetHeight;
                 
-                // Calculate position to center the window at mouse cursor
-                const windowWidth = targetWindow.offsetWidth;
-                const windowHeight = targetWindow.offsetHeight;
+                // Use 60% of the available space centered in the viewport
+                const centerX = maxX / 2;
+                const centerY = maxY / 2;
+                const rangeX = maxX * 0.6;
+                const rangeY = maxY * 0.6;
                 
-                // Position window with its center at the mouse cursor
-                let posX = mouseX - (windowWidth / 2);
-                let posY = mouseY - (windowHeight / 2);
+                // Calculate random position within the center area
+                const randomX = Math.max(0, Math.min(centerX - rangeX/2 + Math.random() * rangeX, maxX));
+                const randomY = Math.max(0, Math.min(centerY - rangeY/2 + Math.random() * rangeY, maxY));
                 
-                // Constrain to viewport bounds
-                const maxX = document.body.clientWidth - windowWidth;
-                const maxY = document.body.clientHeight - windowHeight;
-                
-                posX = Math.max(0, Math.min(posX, maxX));
-                posY = Math.max(0, Math.min(posY, maxY));
-                
-                targetWindow.style.left = posX + 'px';
-                targetWindow.style.top = posY + 'px';
+                targetWindow.style.left = randomX + 'px';
+                targetWindow.style.top = randomY + 'px';
                 
                 // Show window with animation
                 openWindow(targetWindow);
