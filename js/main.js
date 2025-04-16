@@ -19,30 +19,32 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetWindow = document.getElementById(windowId);
             
             if (targetWindow) {
-                // Get the position of the main window
+                // Get the position and dimensions of the main window
                 const mainWindow = document.querySelector('.main-window');
                 const mainRect = mainWindow.getBoundingClientRect();
                 
-                // Calculate position relative to the main window
-                // Position windows in a cascading pattern from the top-right of main window
-                const index = Array.from(dockItems).indexOf(this);
-                const offsetX = 30 + (index * 20);
-                const offsetY = 30 + (index * 20);
+                // Calculate a position near the main window
+                // Use a smaller area around the main window (about 100-200px offset)
+                const offsetRange = 150;
+                const mainCenterX = mainRect.left + mainRect.width/2;
+                const mainCenterY = mainRect.top + mainRect.height/2;
                 
-                targetWindow.style.left = (mainRect.right + offsetX) + 'px';
-                targetWindow.style.top = (mainRect.top + offsetY) + 'px';
+                // Random position within a limited range around the main window
+                const randomOffsetX = (Math.random() - 0.5) * offsetRange;
+                const randomOffsetY = (Math.random() - 0.5) * offsetRange;
                 
-                // Ensure the window is within viewport bounds
+                let newX = mainCenterX + randomOffsetX - targetWindow.offsetWidth/2;
+                let newY = mainCenterY + randomOffsetY - targetWindow.offsetHeight/2;
+                
+                // Ensure the window stays within viewport bounds
                 const maxX = document.body.clientWidth - targetWindow.offsetWidth;
                 const maxY = document.body.clientHeight - targetWindow.offsetHeight;
                 
-                if (parseInt(targetWindow.style.left) > maxX) {
-                    targetWindow.style.left = (mainRect.left - targetWindow.offsetWidth - offsetX) + 'px';
-                }
+                newX = Math.max(10, Math.min(newX, maxX - 10));
+                newY = Math.max(10, Math.min(newY, maxY - 10));
                 
-                if (parseInt(targetWindow.style.top) > maxY) {
-                    targetWindow.style.top = maxY + 'px';
-                }
+                targetWindow.style.left = newX + 'px';
+                targetWindow.style.top = newY + 'px';
                 
                 // Show window with animation
                 openWindow(targetWindow);
