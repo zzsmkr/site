@@ -327,7 +327,6 @@ body {
 
 .social-item i {
     font-size: 24px;
-    color: white;
     margin-right: 15px;
     width: 40px;
     height: 40px;
@@ -335,36 +334,40 @@ body {
     align-items: center;
     justify-content: center;
     border-radius: 10px;
+    color: white;
 }
 
 /* Platform-specific colors */
 .social-item.youtube {
+    background: linear-gradient(to right, rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0.05));
     border-left: 4px solid #FF0000;
 }
 .social-item.youtube i {
-    background: linear-gradient(135deg, #FF0000, #CC0000);
+    background: #FF0000;
 }
 
 .social-item.tiktok {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.05));
     border-left: 4px solid #000000;
 }
 .social-item.tiktok i {
-    background: linear-gradient(135deg, #25F4EE, #000000, #FE2C55);
-    color: white;
+    background: #000000;
 }
 
 .social-item.telegram {
+    background: linear-gradient(to right, rgba(0, 136, 204, 0.1), rgba(0, 136, 204, 0.05));
     border-left: 4px solid #0088cc;
 }
 .social-item.telegram i {
-    background: linear-gradient(135deg, #0088cc, #0055aa);
+    background: #0088cc;
 }
 
 .social-item.discord {
+    background: linear-gradient(to right, rgba(88, 101, 242, 0.1), rgba(88, 101, 242, 0.05));
     border-left: 4px solid #5865F2;
 }
 .social-item.discord i {
-    background: linear-gradient(135deg, #5865F2, #404EED);
+    background: #5865F2;
 }
 
 .social-item-content {
