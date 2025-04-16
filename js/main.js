@@ -19,9 +19,17 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetWindow = document.getElementById(windowId);
             
             if (targetWindow) {
+                // First make the window visible but with opacity 0 to calculate dimensions
+                targetWindow.style.display = 'block';
+                targetWindow.style.opacity = '0';
+                
+                // Now we can get accurate dimensions
+                const windowWidth = targetWindow.offsetWidth;
+                const windowHeight = targetWindow.offsetHeight;
+                
                 // Position the window randomly but closer to the center
-                const maxX = document.body.clientWidth - targetWindow.offsetWidth;
-                const maxY = document.body.clientHeight - targetWindow.offsetHeight;
+                const maxX = document.body.clientWidth - windowWidth;
+                const maxY = document.body.clientHeight - windowHeight;
                 
                 // Use 60% of the available space centered in the viewport
                 const centerX = maxX / 2;
@@ -35,6 +43,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 targetWindow.style.left = randomX + 'px';
                 targetWindow.style.top = randomY + 'px';
+                
+                // Reset opacity to let the animation handle it
+                targetWindow.style.opacity = '';
                 
                 // Show window with animation
                 openWindow(targetWindow);
