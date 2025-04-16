@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetWindow = document.getElementById(windowId);
             
             if (targetWindow) {
-                // Position the window at the mouse cursor
+                // Position the window with its center at the mouse cursor
                 const mouseX = e.clientX;
                 const mouseY = e.clientY;
                 
@@ -28,8 +28,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 const maxY = document.body.clientHeight - targetWindow.offsetHeight;
                 
                 // Calculate position ensuring window is fully visible
+                // Subtract half the window width and height to center it at cursor
                 const windowX = Math.max(0, Math.min(mouseX - (targetWindow.offsetWidth / 2), maxX));
-                const windowY = Math.max(0, Math.min(mouseY - 30, maxY)); // 30px offset to position below cursor
+                const windowY = Math.max(0, Math.min(mouseY - (targetWindow.offsetHeight / 2), maxY));
                 
                 targetWindow.style.left = windowX + 'px';
                 targetWindow.style.top = windowY + 'px';
