@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetWindow = document.getElementById(windowId);
             
             if (targetWindow) {
-                // Position the window closer to the center with some variation
+                // Position the window closer to the center with some randomness
                 const viewportWidth = document.body.clientWidth;
                 const viewportHeight = document.body.clientHeight;
                 const windowWidth = targetWindow.offsetWidth;
@@ -29,19 +29,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 const centerX = (viewportWidth - windowWidth) / 2;
                 const centerY = (viewportHeight - windowHeight) / 2;
                 
-                // Add some variation but keep it within the central area (±20% of viewport)
-                const variationRangeX = viewportWidth * 0.2;
-                const variationRangeY = viewportHeight * 0.2;
+                // Add some randomness but keep windows closer to center
+                // Only allow 20% deviation from center
+                const maxDeviation = 0.2;
+                const deviationX = (Math.random() * 2 - 1) * (viewportWidth * maxDeviation);
+                const deviationY = (Math.random() * 2 - 1) * (viewportHeight * maxDeviation);
                 
-                const randomX = centerX + (Math.random() * variationRangeX - variationRangeX/2);
-                const randomY = centerY + (Math.random() * variationRangeY - variationRangeY/2);
+                // Calculate final position with constraints
+                const newX = Math.max(0, Math.min(viewportWidth - windowWidth, centerX + deviationX));
+                const newY = Math.max(0, Math.min(viewportHeight - windowHeight, centerY + deviationY));
                 
-                // Ensure window stays within viewport bounds
-                const finalX = Math.max(0, Math.min(randomX, viewportWidth - windowWidth));
-                const finalY = Math.max(0, Math.min(randomY, viewportHeight - windowHeight));
-                
-                targetWindow.style.left = finalX + 'px';
-                targetWindow.style.top = finalY + 'px';
+                targetWindow.style.left = newX + 'px';
+                targetWindow.style.top = newY + 'px';
                 
                 // Show window with animation
                 openWindow(targetWindow);
