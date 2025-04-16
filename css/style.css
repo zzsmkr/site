@@ -310,6 +310,7 @@ body {
     margin-top: 20px;
 }
 
+/* Update social-item to be clickable */
 .social-item {
     border-radius: 12px;
     padding: 15px;
@@ -318,6 +319,41 @@ body {
     transition: var(--transition);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     color: white;
+    text-decoration: none;
+}
+
+/* Contact Email Plaque */
+.contact-email {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.contact-plaque {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 20px 30px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+    transition: var(--transition);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-plaque:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.contact-plaque i {
+    font-size: 24px;
+}
+
+.contact-plaque span {
+    font-size: 18px;
+    font-weight: 500;
 }
 
 /* YouTube - Red */
