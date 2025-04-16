@@ -568,6 +568,10 @@ body {
     text-align: center;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     transition: var(--transition);
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .contact-box:hover {
@@ -581,7 +585,7 @@ body {
     justify-content: center;
     gap: 10px;
     color: var(--text-color);
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 500;
     text-decoration: none;
     transition: var(--transition);
@@ -593,5 +597,5 @@ body {
 
 .contact-email i {
     color: var(--primary-color);
-    font-size: 18px;
+    font-size: 20px;
 }
