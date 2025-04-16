@@ -19,32 +19,27 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetWindow = document.getElementById(windowId);
             
             if (targetWindow) {
-                // Get the position and dimensions of the main window
+                // Get the main window position and dimensions
                 const mainWindow = document.querySelector('.main-window');
                 const mainRect = mainWindow.getBoundingClientRect();
+                const mainCenterX = mainRect.left + mainRect.width / 2;
+                const mainCenterY = mainRect.top + mainRect.height / 2;
                 
-                // Calculate a position near the main window
-                // Use a smaller area around the main window (about 100-200px offset)
-                const offsetRange = 150;
-                const mainCenterX = mainRect.left + mainRect.width/2;
-                const mainCenterY = mainRect.top + mainRect.height/2;
+                // Set a margin around the main window where new windows can appear
+                const margin = 100; // pixels from the main window
                 
-                // Random position within a limited range around the main window
-                const randomOffsetX = (Math.random() - 0.5) * offsetRange;
-                const randomOffsetY = (Math.random() - 0.5) * offsetRange;
+                // Calculate bounds for random positioning (closer to main window)
+                const minX = Math.max(0, mainCenterX - 300 - margin);
+                const maxX = Math.min(document.body.clientWidth - targetWindow.offsetWidth, mainCenterX + 300 + margin);
+                const minY = Math.max(0, mainCenterY - 200 - margin);
+                const maxY = Math.min(document.body.clientHeight - targetWindow.offsetHeight, mainCenterY + 200 + margin);
                 
-                let newX = mainCenterX + randomOffsetX - targetWindow.offsetWidth/2;
-                let newY = mainCenterY + randomOffsetY - targetWindow.offsetHeight/2;
+                // Generate random position within these bounds
+                const randomX = Math.floor(minX + Math.random() * (maxX - minX));
+                const randomY = Math.floor(minY + Math.random() * (maxY - minY));
                 
-                // Ensure the window stays within viewport bounds
-                const maxX = document.body.clientWidth - targetWindow.offsetWidth;
-                const maxY = document.body.clientHeight - targetWindow.offsetHeight;
-                
-                newX = Math.max(10, Math.min(newX, maxX - 10));
-                newY = Math.max(10, Math.min(newY, maxY - 10));
-                
-                targetWindow.style.left = newX + 'px';
-                targetWindow.style.top = newY + 'px';
+                targetWindow.style.left = randomX + 'px';
+                targetWindow.style.top = randomY + 'px';
                 
                 // Show window with animation
                 openWindow(targetWindow);
