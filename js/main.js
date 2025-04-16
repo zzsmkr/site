@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const windowId = this.getAttribute('data-window') + '-window';
             const targetWindow = document.getElementById(windowId);
             
-
             if (targetWindow) {
                 // Position the window closer to the center with some variation
                 const viewportWidth = document.body.clientWidth;
