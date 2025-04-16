@@ -313,6 +313,21 @@ body {
 /* Email item styling */
 .email-item {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    text-align: center;
+    justify-content: center;
+}
+
+.email-item .social-item-content {
+    flex: 0;
+}
+
+.email-item h3 {
+    display: none;
+}
+
+.email-item p {
+    font-size: 16px;
+    font-weight: 500;
 }
 
 /* Update social-item to be clickable */
@@ -328,6 +343,19 @@ body {
     align-items: center;
     transition: var(--transition);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    color: white;
+    text-decoration: none;
+}
+
+/* Remove underlines from social media links */
+.social-item a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: var(--transition);
+    font-weight: 500;
+}
+
+.social-item a:hover {
     color: white;
     text-decoration: none;
 }
