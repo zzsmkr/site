@@ -327,15 +327,44 @@ body {
 
 .social-item i {
     font-size: 24px;
-    color: var(--primary-color);
+    color: white;
     margin-right: 15px;
     width: 40px;
     height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(108, 92, 231, 0.1);
     border-radius: 10px;
+}
+
+/* Platform-specific colors */
+.social-item.youtube {
+    border-left: 4px solid #FF0000;
+}
+.social-item.youtube i {
+    background: linear-gradient(135deg, #FF0000, #CC0000);
+}
+
+.social-item.tiktok {
+    border-left: 4px solid #000000;
+}
+.social-item.tiktok i {
+    background: linear-gradient(135deg, #25F4EE, #000000, #FE2C55);
+    color: white;
+}
+
+.social-item.telegram {
+    border-left: 4px solid #0088cc;
+}
+.social-item.telegram i {
+    background: linear-gradient(135deg, #0088cc, #0055aa);
+}
+
+.social-item.discord {
+    border-left: 4px solid #5865F2;
+}
+.social-item.discord i {
+    background: linear-gradient(135deg, #5865F2, #404EED);
 }
 
 .social-item-content {
