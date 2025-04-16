@@ -558,7 +558,7 @@ body {
     margin: 40px auto 0;
     background-color: #f8f9fa;
     border-radius: 12px;
-    padding: 20px;
+    padding: 12px 20px;
     text-align: center;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     transition: var(--transition);
