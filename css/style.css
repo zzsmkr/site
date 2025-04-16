@@ -312,13 +312,17 @@ body {
 
 /* Email item styling */
 .email-item {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: #f8f9fa;
     text-align: center;
-    justify-content: center;
+    justify-content: flex-start;
+    width: 50%;
+    margin: 0 auto;
+    color: var(--text-color);
 }
 
 .email-item .social-item-content {
-    flex: 0;
+    flex: 1;
+    text-align: center;
 }
 
 .email-item h3 {
@@ -326,8 +330,14 @@ body {
 }
 
 .email-item p {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 500;
+    width: 100%;
+}
+
+.email-item i {
+    color: var(--primary-color);
+    background-color: rgba(108, 92, 231, 0.1);
 }
 
 /* Update social-item to be clickable */
