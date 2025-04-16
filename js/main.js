@@ -14,32 +14,25 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Dock item click handlers
     dockItems.forEach(item => {
-        item.addEventListener('click', function() {
+        item.addEventListener('click', function(e) {
             const windowId = this.getAttribute('data-window') + '-window';
             const targetWindow = document.getElementById(windowId);
             
             if (targetWindow) {
-                // Get the main window position and dimensions
-                const mainWindow = document.querySelector('.main-window');
-                const mainRect = mainWindow.getBoundingClientRect();
-                const mainCenterX = mainRect.left + mainRect.width / 2;
-                const mainCenterY = mainRect.top + mainRect.height / 2;
+                // Position the window at the mouse cursor
+                const mouseX = e.clientX;
+                const mouseY = e.clientY;
                 
-                // Set a margin around the main window where new windows can appear
-                const margin = 100; // pixels from the main window
+                // Constrain to viewport bounds
+                const maxX = document.body.clientWidth - targetWindow.offsetWidth;
+                const maxY = document.body.clientHeight - targetWindow.offsetHeight;
                 
-                // Calculate bounds for random positioning (closer to main window)
-                const minX = Math.max(0, mainCenterX - 300 - margin);
-                const maxX = Math.min(document.body.clientWidth - targetWindow.offsetWidth, mainCenterX + 300 + margin);
-                const minY = Math.max(0, mainCenterY - 200 - margin);
-                const maxY = Math.min(document.body.clientHeight - targetWindow.offsetHeight, mainCenterY + 200 + margin);
+                // Calculate position ensuring window is fully visible
+                const windowX = Math.max(0, Math.min(mouseX - (targetWindow.offsetWidth / 2), maxX));
+                const windowY = Math.max(0, Math.min(mouseY - 30, maxY)); // 30px offset to position below cursor
                 
-                // Generate random position within these bounds
-                const randomX = Math.floor(minX + Math.random() * (maxX - minX));
-                const randomY = Math.floor(minY + Math.random() * (maxY - minY));
-                
-                targetWindow.style.left = randomX + 'px';
-                targetWindow.style.top = randomY + 'px';
+                targetWindow.style.left = windowX + 'px';
+                targetWindow.style.top = windowY + 'px';
                 
                 // Show window with animation
                 openWindow(targetWindow);
