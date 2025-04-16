@@ -19,28 +19,30 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetWindow = document.getElementById(windowId);
             
             if (targetWindow) {
-                // Get the button's position and dimensions
-                const buttonRect = this.getBoundingClientRect();
-                const buttonCenterX = buttonRect.left + buttonRect.width / 2;
-                const buttonTop = buttonRect.top;
+                // Get the position of the main window
+                const mainWindow = document.querySelector('.main-window');
+                const mainRect = mainWindow.getBoundingClientRect();
                 
-                // Calculate window position to center it over the button
-                const windowWidth = targetWindow.offsetWidth || 500; // Default if not yet rendered
-                const windowHeight = targetWindow.offsetHeight || 400; // Default if not yet rendered
+                // Calculate position relative to the main window
+                // Position windows in a cascading pattern from the top-right of main window
+                const index = Array.from(dockItems).indexOf(this);
+                const offsetX = 30 + (index * 20);
+                const offsetY = 30 + (index * 20);
                 
-                const windowX = buttonCenterX - (windowWidth / 2);
-                const windowY = buttonTop - windowHeight - 20; // 20px gap above button
+                targetWindow.style.left = (mainRect.right + offsetX) + 'px';
+                targetWindow.style.top = (mainRect.top + offsetY) + 'px';
                 
-                // Constrain to viewport bounds
-                const maxX = document.body.clientWidth - windowWidth;
-                const maxY = document.body.clientHeight - windowHeight;
+                // Ensure the window is within viewport bounds
+                const maxX = document.body.clientWidth - targetWindow.offsetWidth;
+                const maxY = document.body.clientHeight - targetWindow.offsetHeight;
                 
-                const constrainedX = Math.max(10, Math.min(windowX, maxX - 10));
-                const constrainedY = Math.max(10, Math.min(windowY, maxY - 10));
+                if (parseInt(targetWindow.style.left) > maxX) {
+                    targetWindow.style.left = (mainRect.left - targetWindow.offsetWidth - offsetX) + 'px';
+                }
                 
-                // Position the window
-                targetWindow.style.left = constrainedX + 'px';
-                targetWindow.style.top = constrainedY + 'px';
+                if (parseInt(targetWindow.style.top) > maxY) {
+                    targetWindow.style.top = maxY + 'px';
+                }
                 
                 // Show window with animation
                 openWindow(targetWindow);
