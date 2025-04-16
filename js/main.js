@@ -19,24 +19,12 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetWindow = document.getElementById(windowId);
             
             if (targetWindow) {
-                // Get the main window position and dimensions
-                const mainWindow = document.querySelector('.main-window');
-                const mainRect = mainWindow.getBoundingClientRect();
-                const mainCenterX = mainRect.left + mainRect.width / 2;
-                const mainCenterY = mainRect.top + mainRect.height / 2;
+                // Position the window randomly within viewport bounds
+                const maxX = document.body.clientWidth - targetWindow.offsetWidth;
+                const maxY = document.body.clientHeight - targetWindow.offsetHeight;
                 
-                // Set a margin around the main window where new windows can appear
-                const margin = 100; // pixels from the main window
-                
-                // Calculate bounds for random positioning (closer to main window)
-                const minX = Math.max(0, mainCenterX - 300 - margin);
-                const maxX = Math.min(document.body.clientWidth - targetWindow.offsetWidth, mainCenterX + 300 + margin);
-                const minY = Math.max(0, mainCenterY - 200 - margin);
-                const maxY = Math.min(document.body.clientHeight - targetWindow.offsetHeight, mainCenterY + 200 + margin);
-                
-                // Generate random position within these bounds
-                const randomX = Math.floor(minX + Math.random() * (maxX - minX));
-                const randomY = Math.floor(minY + Math.random() * (maxY - minY));
+                const randomX = Math.max(0, Math.floor(Math.random() * maxX));
+                const randomY = Math.max(0, Math.floor(Math.random() * maxY));
                 
                 targetWindow.style.left = randomX + 'px';
                 targetWindow.style.top = randomY + 'px';
