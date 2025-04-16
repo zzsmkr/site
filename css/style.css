@@ -337,37 +337,41 @@ body {
     color: white;
 }
 
-/* Platform-specific colors */
-.social-item.youtube {
-    background: linear-gradient(to right, rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0.05));
-    border-left: 4px solid #FF0000;
+/* Platform-specific colors - with !important to override any other styles */
+.socials-grid .social-item.youtube {
+    background: linear-gradient(to right, rgba(255, 0, 0, 0.15), rgba(255, 0, 0, 0.05)) !important;
+    border-left: 4px solid #FF0000 !important;
 }
-.social-item.youtube i {
-    background: #FF0000;
-}
-
-.social-item.tiktok {
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.05));
-    border-left: 4px solid #000000;
-}
-.social-item.tiktok i {
-    background: #000000;
+.socials-grid .social-item.youtube i {
+    background: #FF0000 !important;
+    color: white !important;
 }
 
-.social-item.telegram {
-    background: linear-gradient(to right, rgba(0, 136, 204, 0.1), rgba(0, 136, 204, 0.05));
-    border-left: 4px solid #0088cc;
+.socials-grid .social-item.tiktok {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.05)) !important;
+    border-left: 4px solid #000000 !important;
 }
-.social-item.telegram i {
-    background: #0088cc;
+.socials-grid .social-item.tiktok i {
+    background: #000000 !important;
+    color: white !important;
 }
 
-.social-item.discord {
-    background: linear-gradient(to right, rgba(88, 101, 242, 0.1), rgba(88, 101, 242, 0.05));
-    border-left: 4px solid #5865F2;
+.socials-grid .social-item.telegram {
+    background: linear-gradient(to right, rgba(0, 136, 204, 0.15), rgba(0, 136, 204, 0.05)) !important;
+    border-left: 4px solid #0088cc !important;
 }
-.social-item.discord i {
-    background: #5865F2;
+.socials-grid .social-item.telegram i {
+    background: #0088cc !important;
+    color: white !important;
+}
+
+.socials-grid .social-item.discord {
+    background: linear-gradient(to right, rgba(88, 101, 242, 0.15), rgba(88, 101, 242, 0.05)) !important;
+    border-left: 4px solid #5865F2 !important;
+}
+.socials-grid .social-item.discord i {
+    background: #5865F2 !important;
+    color: white !important;
 }
 
 .social-item-content {
