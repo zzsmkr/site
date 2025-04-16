@@ -551,3 +551,41 @@ body {
     font-weight: 500;
     color: var(--text-color);
 }
+
+/* Contact Box */
+.contact-box {
+    max-width: 300px;
+    margin: 40px auto 0;
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+}
+
+.contact-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.contact-email {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: var(--text-color);
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.contact-email:hover {
+    color: var(--primary-color);
+}
+
+.contact-email i {
+    color: var(--primary-color);
+    font-size: 20px;
+}
