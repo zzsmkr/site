@@ -153,6 +153,7 @@ document.addEventListener('DOMContentLoaded', function() {
         );
     }
     
+    // Function to close a window with animation
     function closeWindow(window) {
         gsap.to(window, {
             opacity: 0,
