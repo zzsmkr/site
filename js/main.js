@@ -22,30 +22,36 @@ document.addEventListener('DOMContentLoaded', function() {
                 // First make the window visible but with opacity 0 to calculate dimensions
                 targetWindow.style.display = 'block';
                 targetWindow.style.opacity = '0';
+                targetWindow.style.pointerEvents = 'none'; // Prevent interaction while invisible
                 
-                // Now we can get accurate dimensions
-                const windowWidth = targetWindow.offsetWidth;
-                const windowHeight = targetWindow.offsetHeight;
+                // Force browser to calculate dimensions by accessing them
+                const windowWidth = targetWindow.offsetWidth || 500; // Fallback width
+                const windowHeight = targetWindow.offsetHeight || 400; // Fallback height
                 
                 // Position the window randomly but closer to the center
-                const maxX = document.body.clientWidth - windowWidth;
-                const maxY = document.body.clientHeight - windowHeight;
+                const viewportWidth = document.documentElement.clientWidth || window.innerWidth;
+                const viewportHeight = document.documentElement.clientHeight || window.innerHeight;
                 
-                // Use 60% of the available space centered in the viewport
+                const maxX = viewportWidth - windowWidth;
+                const maxY = viewportHeight - windowHeight;
+                
+                // Use 50% of the available space centered in the viewport
                 const centerX = maxX / 2;
                 const centerY = maxY / 2;
-                const rangeX = maxX * 0.6;
-                const rangeY = maxY * 0.6;
+                const rangeX = maxX * 0.5;
+                const rangeY = maxY * 0.5;
                 
                 // Calculate random position within the center area
-                const randomX = Math.max(0, Math.min(centerX - rangeX/2 + Math.random() * rangeX, maxX));
-                const randomY = Math.max(0, Math.min(centerY - rangeY/2 + Math.random() * rangeY, maxY));
+                const randomX = Math.max(20, Math.min(centerX - rangeX/2 + Math.random() * rangeX, maxX - 20));
+                const randomY = Math.max(20, Math.min(centerY - rangeY/2 + Math.random() * rangeY, maxY - 20));
                 
+                // Apply position with a minimum margin from edges
                 targetWindow.style.left = randomX + 'px';
                 targetWindow.style.top = randomY + 'px';
                 
-                // Reset opacity to let the animation handle it
+                // Reset opacity and pointer events to let the animation handle it
                 targetWindow.style.opacity = '';
+                targetWindow.style.pointerEvents = '';
                 
                 // Show window with animation
                 openWindow(targetWindow);
