@@ -18,16 +18,31 @@ document.addEventListener('DOMContentLoaded', function() {
             const windowId = this.getAttribute('data-window') + '-window';
             const targetWindow = document.getElementById(windowId);
             
+
             if (targetWindow) {
-                // Position the window randomly within viewport bounds
-                const maxX = document.body.clientWidth - targetWindow.offsetWidth;
-                const maxY = document.body.clientHeight - targetWindow.offsetHeight;
+                // Position the window closer to the center with some variation
+                const viewportWidth = document.body.clientWidth;
+                const viewportHeight = document.body.clientHeight;
+                const windowWidth = targetWindow.offsetWidth;
+                const windowHeight = targetWindow.offsetHeight;
                 
-                const randomX = Math.max(0, Math.floor(Math.random() * maxX));
-                const randomY = Math.max(0, Math.floor(Math.random() * maxY));
+                // Calculate center position
+                const centerX = (viewportWidth - windowWidth) / 2;
+                const centerY = (viewportHeight - windowHeight) / 2;
                 
-                targetWindow.style.left = randomX + 'px';
-                targetWindow.style.top = randomY + 'px';
+                // Add some variation but keep it within the central area (±20% of viewport)
+                const variationRangeX = viewportWidth * 0.2;
+                const variationRangeY = viewportHeight * 0.2;
+                
+                const randomX = centerX + (Math.random() * variationRangeX - variationRangeX/2);
+                const randomY = centerY + (Math.random() * variationRangeY - variationRangeY/2);
+                
+                // Ensure window stays within viewport bounds
+                const finalX = Math.max(0, Math.min(randomX, viewportWidth - windowWidth));
+                const finalY = Math.max(0, Math.min(randomY, viewportHeight - windowHeight));
+                
+                targetWindow.style.left = finalX + 'px';
+                targetWindow.style.top = finalY + 'px';
                 
                 // Show window with animation
                 openWindow(targetWindow);
