@@ -312,12 +312,14 @@ body {
 
 /* Email item styling */
 .email-item {
-    background: #f8f9fa;
+    background-color: #f8f9fa !important;
+    background-image: none !important;
     text-align: center;
     justify-content: flex-start;
     width: 50%;
     margin: 0 auto;
-    color: var(--text-color);
+    color: var(--text-color) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .email-item .social-item-content {
@@ -330,14 +332,15 @@ body {
 }
 
 .email-item p {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 500;
     width: 100%;
+    color: var(--text-color) !important;
 }
 
 .email-item i {
-    color: var(--primary-color);
-    background-color: rgba(108, 92, 231, 0.1);
+    color: var(--primary-color) !important;
+    background-color: rgba(108, 92, 231, 0.1) !important;
 }
 
 /* Update social-item to be clickable */
