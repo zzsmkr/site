@@ -19,28 +19,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetWindow = document.getElementById(windowId);
             
             if (targetWindow) {
-                // Position the window closer to the center with some randomness
-                const viewportWidth = document.body.clientWidth;
-                const viewportHeight = document.body.clientHeight;
-                const windowWidth = targetWindow.offsetWidth;
-                const windowHeight = targetWindow.offsetHeight;
-                
-                // Calculate center position
-                const centerX = (viewportWidth - windowWidth) / 2;
-                const centerY = (viewportHeight - windowHeight) / 2;
-                
-                // Add some randomness but keep windows closer to center
-                // Only allow 20% deviation from center
-                const maxDeviation = 0.2;
-                const deviationX = (Math.random() * 2 - 1) * (viewportWidth * maxDeviation);
-                const deviationY = (Math.random() * 2 - 1) * (viewportHeight * maxDeviation);
-                
-                // Calculate final position with constraints
-                const newX = Math.max(0, Math.min(viewportWidth - windowWidth, centerX + deviationX));
-                const newY = Math.max(0, Math.min(viewportHeight - windowHeight, centerY + deviationY));
-                
-                targetWindow.style.left = newX + 'px';
-                targetWindow.style.top = newY + 'px';
+                // Position the window in the center with offset if other windows are open
+                positionWindowWithOffset(targetWindow);
                 
                 // Show window with animation
                 openWindow(targetWindow);
@@ -124,15 +104,29 @@ document.addEventListener('DOMContentLoaded', function() {
         window.style.zIndex = zIndexCounter;
     }
     
+    // Function to position windows with cascading offset
+    function positionWindowWithOffset(window) {
+        // Get all currently visible windows
+        const visibleWindows = Array.from(document.querySelectorAll('.draggable-window'))
+            .filter(w => w.style.display === 'block' && w !== window);
+        
+        // Base position (center)
+        const centerX = (document.body.clientWidth - window.offsetWidth) / 2;
+        const centerY = (document.body.clientHeight - window.offsetHeight) / 2;
+        
+        // Apply offset based on number of open windows (20px per window)
+        const offset = visibleWindows.length * 20;
+        
+        // Apply position with offset
+        window.style.left = (centerX + offset) + 'px';
+        window.style.top = (centerY + offset) + 'px';
+        
+        // Reset transform that might have been set in openWindow
+        window.style.transform = 'none';
+    }
+    
     // Function to open a window with animation
     function openWindow(window) {
-        // Set initial position if not set
-        if (!window.style.left) {
-            window.style.left = '50%';
-            window.style.top = '50%';
-            window.style.transform = 'translate(-50%, -50%)';
-        }
-        
         // Display the window
         window.style.display = 'block';
         
