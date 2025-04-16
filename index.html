@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Designer & Content Creator</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+    <div class="desktop">
+        <!-- Main Window (Undraggable) -->
+        <div class="window main-window">
+            <div class="window-header">
+                <div class="window-title">Welcome</div>
+                <div class="window-controls">
+                    <span class="control minimize"></span>
+                    <span class="control maximize"></span>
+                    <span class="control close"></span>
+                </div>
+            </div>
+            <div class="window-content">
+                <div class="profile-section">
+                    <div class="profile-image">
+                        <!-- Replace with your profile image -->
+                        <div class="avatar-placeholder">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </div>
+                    <div class="profile-info">
+                        <h1>Your Name</h1>
+                        <h2>Designer & Content Creator</h2>
+                        <p>Welcome to my portfolio! I create stunning designs and engaging content.</p>
+                    </div>
+                </div>
+                <div class="dock">
+                    <button class="dock-item" data-window="about">
+                        <i class="fas fa-user"></i>
+                        <span>About</span>
+                    </button>
+                    <button class="dock-item" data-window="projects">
+                        <i class="fas fa-briefcase"></i>
+                        <span>Projects</span>
+                    </button>
+                    <button class="dock-item" data-window="skills">
+                        <i class="fas fa-code"></i>
+                        <span>Skills</span>
+                    </button>
+                    <button class="dock-item" data-window="contact">
+                        <i class="fas fa-envelope"></i>
+                        <span>Contact</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Window (Draggable) -->
+        <div class="window draggable-window" id="about-window">
+            <div class="window-header">
+                <div class="window-title">About Me</div>
+                <div class="window-controls">
+                    <span class="control minimize"></span>
+                    <span class="control maximize"></span>
+                    <span class="control close"></span>
+                </div>
+            </div>
+            <div class="window-content">
+                <h2>About Me</h2>
+                <p>I'm a passionate designer and content creator with X years of experience in the industry.</p>
+                <p>My journey began when I discovered my love for design during my studies at [University/School].</p>
+                <p>When I'm not designing, you can find me [hobbies/interests].</p>
+            </div>
+        </div>
+
+        <!-- Projects Window (Draggable) -->
+        <div class="window draggable-window" id="projects-window">
+            <div class="window-header">
+                <div class="window-title">My Projects</div>
+                <div class="window-controls">
+                    <span class="control minimize"></span>
+                    <span class="control maximize"></span>
+                    <span class="control close"></span>
+                </div>
+            </div>
+            <div class="window-content">
+                <h2>Projects</h2>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <div class="project-image"></div>
+                        <h3>Project 1</h3>
+                        <p>Description of project 1</p>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image"></div>
+                        <h3>Project 2</h3>
+                        <p>Description of project 2</p>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image"></div>
+                        <h3>Project 3</h3>
+                        <p>Description of project 3</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills Window (Draggable) -->
+        <div class="window draggable-window" id="skills-window">
+            <div class="window-header">
+                <div class="window-title">My Skills</div>
+                <div class="window-controls">
+                    <span class="control minimize"></span>
+                    <span class="control maximize"></span>
+                    <span class="control close"></span>
+                </div>
+            </div>
+            <div class="window-content">
+                <h2>Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <i class="fas fa-paint-brush"></i>
+                        <h3>Design</h3>
+                        <p>UI/UX, Graphic Design, Illustration</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-camera"></i>
+                        <h3>Photography</h3>
+                        <p>Portrait, Landscape, Product</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-video"></i>
+                        <h3>Video</h3>
+                        <p>Editing, Motion Graphics, Animation</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Window (Draggable) -->
+        <div class="window draggable-window" id="contact-window">
+            <div class="window-header">
+                <div class="window-title">Contact Me</div>
+                <div class="window-controls">
+                    <span class="control minimize"></span>
+                    <span class="control maximize"></span>
+                    <span class="control close"></span>
+                </div>
+            </div>
+            <div class="window-content">
+                <h2>Get in Touch</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>email@example.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <p>linkedin.com/in/yourname</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-instagram"></i>
+                        <p>@yourusername</p>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-dribbble"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-behance"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
