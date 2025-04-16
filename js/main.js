@@ -175,6 +175,9 @@ document.addEventListener('DOMContentLoaded', function() {
             onComplete: () => {
                 window.classList.remove('window-active');
                 window.style.display = 'none';
+                
+                // Reset transform to avoid affecting future animations
+                window.style.transform = '';
             }
         });
     }
