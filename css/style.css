@@ -11,6 +11,63 @@
     --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
+/* Dark Theme */
+body.dark-theme {
+    --primary-color: #a29bfe;
+    --secondary-color: #6c5ce7;
+    --text-color: #f5f6fa;
+    --bg-color: #2d3436;
+    --window-bg: #34495e;
+    --window-border: #2c3e50;
+    --window-header: #2c3e50;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Dark Mode Toggle */
+.dark-mode-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+#theme-toggle-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: var(--text-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+}
+
+#theme-toggle-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-theme .contact-box {
+    background-color: #2c3e50;
+}
+
+body.dark-theme .social-item:nth-of-type(1) {
+    background-image: linear-gradient(135deg, #d63031, #ff7675);
+}
+
+body.dark-theme .social-item:nth-of-type(3) {
+    background-image: linear-gradient(135deg, #0984e3, #74b9ff);
+}
+
+body.dark-theme .social-item:nth-of-type(4) {
+    background-image: linear-gradient(135deg, #4834d4, #686de0);
+}
+
 * {
     margin: 0;
     padding: 0;
