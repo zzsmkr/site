@@ -10,16 +10,17 @@
 </head>
 <body>
     <div class="desktop">
-        <!-- Dark Mode Toggle -->
-        <div class="dark-mode-toggle">
-            <button id="theme-toggle-btn">
-                <i class="fas fa-moon"></i>
-            </button>
-        </div>
-        
         <!-- Main Window (Undraggable) -->
         <div class="window main-window">
             <div class="window-header">
+                <div class="theme-toggle">
+                    <input type="checkbox" id="theme-switch" class="theme-switch">
+                    <label for="theme-switch" class="theme-label">
+                        <i class="fas fa-sun"></i>
+                        <i class="fas fa-moon"></i>
+                        <span class="theme-ball"></span>
+                    </label>
+                </div>
                 <div class="window-title">Welcome</div>
                 <div class="window-controls">
                     <span class="control minimize"></span>
@@ -213,7 +214,5 @@
     </div>
 
     <script src="js/main.js"></script>
-    <!-- Add this before the closing body tag if not already present -->
-        <script src="js/script.js"></script>
-    </body>
+</body>
 </html>

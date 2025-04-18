@@ -181,32 +181,27 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-});
-
-// Add this to the end of your main.js file
-
-// Dark mode toggle functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const themeToggleBtn = document.getElementById('theme-toggle-btn');
-    const themeIcon = themeToggleBtn.querySelector('i');
     
-    // Check for saved theme preference
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        document.body.classList.add('dark-theme');
-        themeIcon.classList.replace('fa-moon', 'fa-sun');
+    // Theme toggle functionality
+    const themeSwitch = document.getElementById('theme-switch');
+    
+    // Check for saved theme preference or use device preference
+    const currentTheme = localStorage.getItem('theme') || 
+                         (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    
+    // Set initial theme
+    if (currentTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeSwitch.checked = true;
     }
     
-    // Toggle theme when button is clicked
-    themeToggleBtn.addEventListener('click', function() {
-        document.body.classList.toggle('dark-theme');
-        
-        // Toggle icon
-        if (document.body.classList.contains('dark-theme')) {
-            themeIcon.classList.replace('fa-moon', 'fa-sun');
+    // Theme switch event handler
+    themeSwitch.addEventListener('change', function() {
+        if (this.checked) {
+            document.documentElement.setAttribute('data-theme', 'dark');
             localStorage.setItem('theme', 'dark');
         } else {
-            themeIcon.classList.replace('fa-sun', 'fa-moon');
+            document.documentElement.removeAttribute('data-theme');
             localStorage.setItem('theme', 'light');
         }
     });
