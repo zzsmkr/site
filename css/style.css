@@ -185,7 +185,7 @@ body {
 .dock-item span {
     font-size: 12px;
     font-weight: 500;
-    color: var(--text-color);
+    color: var(--text-color) !important;
 }
 
 /* Project Grid */
@@ -586,15 +586,16 @@ body {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    color: var(--text-color);
+    color: #333333 !important; /* Fixed color regardless of theme */
     font-size: 18px;
     font-weight: 500;
     text-decoration: none;
     transition: var(--transition);
+    line-height: 1;
 }
 
 .contact-email:hover {
-    color: var(--primary-color);
+    color: var(--primary-color) !important;
 }
 
 .contact-email i {
